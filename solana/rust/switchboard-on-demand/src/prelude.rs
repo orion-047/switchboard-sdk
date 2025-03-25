@@ -10,7 +10,9 @@ use crate::cfg_client;
 pub use crate::decimal::*;
 pub use crate::instructions::*;
 pub use crate::types::*;
-pub use crate::{SWITCHBOARD_ON_DEMAND_PROGRAM_ID, SWITCHBOARD_PROGRAM_ID};
+#[cfg(feature = "static-pid")]
+pub use crate::SWITCHBOARD_ON_DEMAND_PROGRAM_ID;
+pub use crate::SWITCHBOARD_PROGRAM_ID;
 cfg_client! {
     pub use crate::client::*;
     use anchor_client;

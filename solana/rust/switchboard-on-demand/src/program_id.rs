@@ -1,7 +1,6 @@
 #[allow(unused_imports)]
 use std::str::FromStr;
 
-use lazy_static::lazy_static;
 use solana_program::pubkey::Pubkey;
 
 use crate::*;
@@ -15,7 +14,8 @@ pub const ON_DEMAND_DEVNET_PID: Pubkey = pubkey!("Aio4gaXjXzJNVLtzwtNVmSqGKpANtX
 // Program id for the Switchboard oracle program
 // sbattyXrzedoNATfc4L31wC9Mhxsi1BmFhTiN8gDshx
 // #[cfg(not(feature = "pid_override"))]
-lazy_static! {
+#[cfg(feature = "static-pid")]
+lazy_static::lazy_static! {
     pub static ref SWITCHBOARD_ON_DEMAND_PROGRAM_ID: Pubkey = if cfg!(feature = "devnet") {
         ON_DEMAND_DEVNET_PID
     } else {
